@@ -74,5 +74,5 @@ Look there first when a test fails. CI uploads this folder.
 
 - ARM64 (Apple Silicon, Windows on ARM): SQL Server does not run under emulation, so SQL Edge is used.
   The app image is linux-x64, and the fixture sets `DOTNET_EnableWriteXorExecute=0` so it runs under emulation.
-- `nuget.config` points to an internal package feed proxy. Change it to nuget.org if you are outside that network.
+- If nuget.org is blocked on your network, point `nuget.config` to your internal feed.
 - CI is in `.github/workflows/ci.yml`. It runs unit tests, builds the app image, then runs the integration tests.
