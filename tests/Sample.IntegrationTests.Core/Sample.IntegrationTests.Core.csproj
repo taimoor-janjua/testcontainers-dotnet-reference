@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Sample.IntegrationTests.Core</RootNamespace>
+    <Description>Reusable, domain-agnostic building blocks for container-based integration tests.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Azure.Messaging.EventHubs" />
+    <PackageReference Include="Azure.Messaging.ServiceBus" />
+    <PackageReference Include="Microsoft.Azure.Cosmos" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="Testcontainers" />
+    <PackageReference Include="Testcontainers.Azurite" />
+    <PackageReference Include="Testcontainers.EventHubs" />
+    <PackageReference Include="WireMock.Net.RestClient" />
+    <PackageReference Include="WireMock.Net.Testcontainers" />
+  </ItemGroup>
+</Project>

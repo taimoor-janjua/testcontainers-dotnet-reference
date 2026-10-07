@@ -1,0 +1,8 @@
+bin/
+obj/
+.vs/
+.idea/
+*.user
+TestResults/
+# Written by the integration tests in RUN_FUNCTION_LOCALLY mode; contains emulator endpoints.
+local.settings.json

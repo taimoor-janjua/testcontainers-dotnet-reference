@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AzureFunctionsVersion>v4</AzureFunctionsVersion>
+    <RootNamespace>Sample.Functions</RootNamespace>
+  </PropertyGroup>
+
+  <!--
+    Container image for the integration tests, built with:
+      dotnet publish src/Sample.Functions -t:PublishContainer -c Release -r linux-x64
+    (see scripts/build-function-image.ps1). No Dockerfile is needed.
+  -->
+  <PropertyGroup>
+    <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
+    <ContainerBaseImage>mcr.microsoft.com/azure-functions/dotnet-isolated:4.1055.150-0-dotnet-isolated10.0</ContainerBaseImage>
+    <ContainerRepository>sample-functions</ContainerRepository>
+    <ContainerImageTag>test</ContainerImageTag>
+    <ContainerWorkingDirectory>/home/site/wwwroot</ContainerWorkingDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sample.Application\Sample.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.EventHubs" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="host.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="local.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+</Project>
